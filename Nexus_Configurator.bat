@@ -26,7 +26,7 @@ pause
 :START
 CLS
 echo ************************************************** 
-echo *            Nexus Configurator                  *
+echo *               Nexus Configurator               *
 echo **************************************************
 echo     Lets start by identifying your hardware
 echo.
@@ -53,7 +53,7 @@ pause
 :ADDRESS
 CLS
 echo ************************************************** 
-echo *            Nexus Configurator                  *
+echo *              Nexus Configurator                *
 echo **************************************************
 echo *                                                *
 echo * Go to your wallet and copy your address        *
@@ -62,7 +62,7 @@ echo * If left blank you will be donating your shares *
 echo *                                                *
 echo **************************************************
 SET /P ADDR=Enter Your Nexus (NXS) Address Here:
-If not defined %ADDR% SET ADDR=2RGMypvsvDxbYUXUDKJ9zc4Cd6ZuE6SVq6ggmLupLgoNU9xmCEn
+If "%ADDR%"=="" SET ADDR=2RGMypvsvDxbYUXUDKJ9zc4Cd6ZuE6SVq6ggmLupLgoNU9xmCEn
 
 :POOL
 CLS
@@ -72,7 +72,7 @@ SET POOL3=nxspool.com
 SET POOL4=nexusminingpool.com
 
 echo **************************************************
-echo *            Nexus Configurator                  *
+echo *             Nexus Configurator                 *
 echo **************************************************
 echo     We will now verify the pools status
 
@@ -178,7 +178,7 @@ echo "primorial_end_prime": 12^}
 :END
 CLS
 echo *******************************************************
-echo *               Nexus Configurator                    *
+echo *               Nexus Configurator                    *
 echo *******************************************************
 echo * Your Miner is now Configured                        *
 echo *                                                     *
@@ -199,6 +199,7 @@ IF %M%==2 GOTO EXIT
 :MINE
 start nexus_cpuminer.exe
 goto MINE
+pause
 
 :EXIT
 exit
