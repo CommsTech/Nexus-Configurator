@@ -40,11 +40,22 @@ ECHO %out%
 SET PREM=%out:L2CacheSize =%
 SET KB=%PREM: =%
 set /a KBCS=%KB%/1
+SET lf=
+FOR /F "delims=" %%i IN ('wmic cpu get L3CacheSize') DO if ("!out!"=="") (set out=%%i) else (set out=!out!%lf%%%i)
+ECHO %out%
+SET PREM=%out:L3CacheSize =%
+SET L3=%PREM: =%
+set /a L3CS=%L3%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
-SET /a arrays=%KBCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
+SET /a TCS=%KBCS% + %L3CS%
+SET /a arrays=%TCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
 echo.
 echo     L2 Cache Size is %KBCS%
+echo     L3 Cache Size is %L3CS%
+echo     Making your Total Cache Size %TCS%
+echo     So we will set your array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
+echo     so we will use %threads% total threads
 echo     current error level %errorlevel%
 echo.
 echo      press any key to continue
