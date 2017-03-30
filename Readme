@@ -1,0 +1,17 @@
+This program is built to assist you in configuring your Nexus Prime Miner.
+Please feel free to modify it for your builds.
+
+Steps
+1) Rename the miner.config from your Nexus_cpuminer folder to miner.config.backup
+2) Place Nexus_Configurator.bat in the Nexus_cpuminer folder
+3) Run Nexus_Configurator.bat
+4) Your miner is now configured, if errors arise revert back to the miner.config.backup file by removing the ".backup"
+
+Finally,
+Please add your stats to the cryptosoldier.com nexus benchmark site so I can improve upon this program.
+
+If you find this tool useful feel free to donate NXS at
+
+Thank you,
+CommsTech
+
