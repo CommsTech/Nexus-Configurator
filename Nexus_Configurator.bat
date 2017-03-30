@@ -34,6 +34,13 @@ echo     Looks like you have a
 echo %PROCESSOR_IDENTIFIER% %PROCESSOR_LEVEL% %PROCESSOR_REVISION%
 wmic cpu get L2CacheSize, L2CacheSpeed, L3CacheSize, L3CacheSpeed
 setlocal EnableDelayedExpansion
+SET os=
+FOR /F "delims=" %%i IN ('wmic os get osarchitecture') DO if ("!osa!"=="") (set osa=%%i) else (set osa=!osa!%os%%%i)
+ECHO %osa%
+SET PROM=%osa:osarchitecture =%
+SET OSS=%PROM: =%
+set /a OST=%OSS:~0,2%
+set ARC=%OST%/1
 SET lf=
 FOR /F "delims=" %%i IN ('wmic cpu get L2CacheSize') DO if ("!out!"=="") (set out=%%i) else (set out=!out!%lf%%%i)
 ECHO %out%
@@ -47,8 +54,8 @@ SET PRAM=%otr:L3CacheSize =%
 SET LC=%PRAM: =%
 SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
-SET /a TCS=%KBCS%+%OCS%
-SET /a arrays=%TCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
+SET /a TCS=%KBCS%
+SET /a arrays=%TCS% * 80 * %ARC% / %NUMBER_OF_PROCESSORS% * %threads%
 echo.
 echo     Making your Total Cache Size %TCS%
 echo     So we will set your array size to %arrays%
