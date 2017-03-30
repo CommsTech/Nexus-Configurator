@@ -56,6 +56,7 @@ SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a TCS=%KBCS%
 SET /a arrays=%TCS% * 80 * %ARC% / %NUMBER_OF_PROCESSORS% * %threads%
+set PRIME=%ARRAY:~0,2%
 echo.
 echo     L3CacheSpeed too slow only using L2Cache
 echo     Making your Total Cache Size %TCS%
@@ -63,6 +64,7 @@ echo     Using %TCS% x 80 x %ARC% /%NUMBER_OF_PROCESSORS% x %threads%
 echo     to set your bit array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
 echo     so we will use %threads% total threads
+echo     We will set your shieve to %PRIME%
 echo     current error level %errorlevel%
 echo.
 echo      press any key to continue
@@ -190,7 +192,7 @@ echo "timeout": "10",
 echo "bit_array_size": %arrays%,
 echo "prime_limit": 71378571,
 echo "n_prime_limit": 4194304,
-echo "primorial_end_prime": 12^}
+echo "primorial_end_prime": %PRIME% ^}
 ) > miner.conf
 
 :END
