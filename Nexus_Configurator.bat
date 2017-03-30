@@ -135,7 +135,7 @@ echo          4. nexusminingpool.com %error4%
 echo.
 echo.
 echo     *NOTE*  Please review the pools webpage before selecting
-echo
+echo.
 SET /P M=Type Your Choice then press ENTER
 IF %M%==1 GOTO POOLA 
 IF %M%==2 GOTO POOLB 
