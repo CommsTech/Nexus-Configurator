@@ -56,7 +56,7 @@ SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a TCS=%KBCS%
 SET /a arrays=%TCS% * 80 * %ARC% / %NUMBER_OF_PROCESSORS% * %threads%
-set PRIME=%ARRAY:~0,2%
+set PRIME=%ARRAY:~0,6%
 echo.
 echo     L3CacheSpeed too slow only using L2Cache
 echo     Making your Total Cache Size %TCS%
