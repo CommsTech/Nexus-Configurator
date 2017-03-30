@@ -57,6 +57,7 @@ SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a OH=%LC% / 1024 / 2 / 2 * %NUMBER_OF_PROCESSORS% * 128
 SET /a TCS=%KBCS%
 IF /I "%KBCS%" LEQ "1024" SET TCS=2048
+IF /I "%KBCS%" GEQ "5120" SET TCS=1664
 SET /a arrays=%TCS% * 80 * %ARC%
 set PRIME=12
 echo.
