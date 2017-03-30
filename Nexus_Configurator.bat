@@ -47,7 +47,7 @@ SET PRAM=%out:L3CacheSize =%
 SET LC=%PRAM: =%
 SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
-SET /a TCS=%KBCS% + %OCS%
+SET /a TCS=%KBCS%+%OCS%
 SET /a arrays=%TCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
 echo.
 echo     Making your Total Cache Size %TCS%
