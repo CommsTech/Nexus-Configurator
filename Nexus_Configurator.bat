@@ -198,7 +198,6 @@ IF %M%==2 GOTO EXIT
 
 :MINE
 start nexus_cpuminer.exe
-goto MINE
 pause
 
 :EXIT
