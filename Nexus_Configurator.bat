@@ -59,7 +59,8 @@ SET /a arrays=%TCS% * 80 * %ARC% / %NUMBER_OF_PROCESSORS% * %threads%
 echo.
 echo     L3CacheSpeed too slow only using L2Cache
 echo     Making your Total Cache Size %TCS%
-echo     So we will set your array size to %arrays%
+echo     Using %TCS% x 80 x %ARC% /%NUMBER_OF_PROCESSORS% x %threads% 
+echo     to set your bit array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
 echo     so we will use %threads% total threads
 echo     current error level %errorlevel%
