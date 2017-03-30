@@ -79,20 +79,20 @@ echo **************************************************
 echo * We will now verify the pools response times    *
 
 ping -n 1 %POOL1% | find "TTL"
-if not errorlevel 1 set error1=GOOD
-if errorlevel 1 set error1=fail
+if not errorlevel 1 set error1=colormsg 0c "GOOD"
+if errorlevel 1 set error1=colormsg 0A "FAILED"
 
 ping -n 1 %POOL2% | find "TTL"
-if not errorlevel 1 set error2=GOOD
-if errorlevel 1 set error2=fail
+if not errorlevel 1 set error2=colormsg 0c "GOOD"
+if errorlevel 1 set error2=colormsg 0A "FAILED"
 
 ping -n 1 %POOL3% | find "TTL"
-if not errorlevel 1 set error3=GOOD
-if errorlevel 1 set error3=fail
+if not errorlevel 1 set error3=colormsg 0c "GOOD"
+if errorlevel 1 set error3=colormsg 0A "FAILED"
 
 ping -n 1 %POOL4% | find "TTL"
-if not errorlevel 1 set error4=GOOD
-if errorlevel 1 set error4=fail
+if not errorlevel 1 set error4=colormsg 0c "GOOD"
+if errorlevel 1 set error4=colormsg 0A "FAILED"
 echo **************************************************
 echo * Below is a list of all the pools               *
 echo * along with your ability to connect to them     * 
