@@ -1,7 +1,6 @@
 @echo off
 CD %~dp0
 Title Nexus CPU Miner Configurator
-CLS
 echo ************************************************** 
 echo *            Nexus Configurator                  *
 echo **************************************************
@@ -71,28 +70,40 @@ SET POOL1=nxscpupool.com
 SET POOL2=nxsminingpool.com
 SET POOL3=nxspool.com
 SET POOL4=nexusminingpool.com
-SET TTL= 200
+
 echo **************************************************
 echo *            Nexus Configurator                  *
 echo **************************************************
-echo     We will now verify the pools response times
+echo     We will now verify the pools status
 
-ping -n 1 %POOL1% | find "TTL"
-if not errorlevel 1 set error1=GOOD
-if errorlevel 1 set error1=FAILED
+ping -n 1 %POOL1% | find "TTL="
+if errorlevel 1 (
+set error1=Failed
+) else (
+set error1=Good
+)
 
-ping -n 1 %POOL2% | find "TTL"
-if not errorlevel 1 set error2=GOOD
-if errorlevel 1 set error2=FAILED
+ping -n 1 %POOL2% | find "TTL="
+if errorlevel 1 (
+set error2=Failed
+) else (
+set error2=Good
+)
 
-ping -n 1 %POOL3% | find "TTL"
-if not errorlevel 1 set error3=GOOD
-if errorlevel 1 set error3=FAILED
+ping -n 1 %POOL3% | find "TTL="
+if errorlevel 1 (
+ set error3=Failed
+ ) else (
+ set error3=Good
+ )
+ 
+ping -n 1 %POOL4% | find "TTL="
+if errorlevel 1 (
+set error4=Failed
+) else (
+set error4=Good
+)
 
-ping -n 1 %POOL4% | find "TTL"
-if not errorlevel 1 set error4=GOOD
-if errorlevel 1 set error4=FAILED
-echo.
 echo     Below is a list of all the pools
 echo     along with your ability to connect to them
 echo.
@@ -105,8 +116,8 @@ echo.
 echo          4. nexusminingpool.com %error4%
 echo.
 echo.
-echo     *NOTE*  the faster your connection
-echo     the faster you can submit shares
+echo     *NOTE*  Please review the pools webpage before selecting
+echo
 SET /P M=Type Your Choice then press ENTER
 IF %M%==1 GOTO POOLA 
 IF %M%==2 GOTO POOLB 
@@ -114,26 +125,23 @@ IF %M%==3 GOTO POOLC
 IF %M%==4 GOTO POOLD
 
 :POOLA
-CLS
 SET MP=nxscpupool.com
 GOTO VERIFY
 
 :POOLB
-CLS
 SET MP=nxsminingpool.com
 GOTO VERIFY
 
 :POOLC
-CLS
 SET MP=nxspool.com
 GOTO VERIFY
 
 :POOLD
-CLS
 SET MP=nexusminingpool.com
 GOTO VERIFY
 
 :VERIFY
+CLS
 echo **************************************************
 echo *             Nexus Configurator                 *
 echo **************************************************
@@ -168,6 +176,7 @@ echo "primorial_end_prime": 12^}
 ) > miner.conf
 
 :END
+CLS
 echo *******************************************************
 echo *               Nexus Configurator                    *
 echo *******************************************************
