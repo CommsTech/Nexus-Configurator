@@ -43,7 +43,7 @@ set /a KBCS=%KB%/1
 SET oc=
 FOR /F "delims=" %%i IN ('wmic cpu get L3CacheSize') DO if ("!otr!"=="") (set otr=%%i) else (set otr=!otr!%oc%%%i)
 ECHO %otr%
-SET PRAM=%out:L3CacheSize =%
+SET PRAM=%otr:L3CacheSize =%
 SET LC=%PRAM: =%
 SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
