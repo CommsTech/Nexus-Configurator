@@ -29,10 +29,9 @@ CLS
 echo ************************************************** 
 echo *            Nexus Configurator                  *
 echo **************************************************
-echo *    Lets start by identifying your hardware     *
-echo *                                                * 
-echo *                                                *
-echo * Looks like you have a                          * 
+echo     Lets start by identifying your hardware
+echo.
+echo     Looks like you have a
 echo %PROCESSOR_IDENTIFIER% %PROCESSOR_LEVEL% %PROCESSOR_REVISION%
 wmic cpu get L2CacheSize, L2CacheSpeed, L3CacheSize, L3CacheSpeed
 setlocal EnableDelayedExpansion
@@ -44,12 +43,12 @@ SET KB=%PREM: =%
 set /a KBCS=%KB%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a arrays=%KBCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
-echo *                                                *
-echo *                                                *
-echo * L2 Cache Size is %KBCS%
-echo * and you have %NUMBER_OF_PROCESSORS% cores                        *
-echo * current error level %errorlevel%                          *
-echo **************************************************
+echo.
+echo     L2 Cache Size is %KBCS%
+echo     and you have %NUMBER_OF_PROCESSORS% cores
+echo     current error level %errorlevel%
+echo.
+echo      press any key to continue
 pause
 
 :ADDRESS
@@ -76,38 +75,38 @@ SET TTL= 200
 echo **************************************************
 echo *            Nexus Configurator                  *
 echo **************************************************
-echo * We will now verify the pools response times    *
+echo     We will now verify the pools response times
 
 ping -n 1 %POOL1% | find "TTL"
-if not errorlevel 1 set error1=colormsg 0c "GOOD"
-if errorlevel 1 set error1=colormsg 0A "FAILED"
+if not errorlevel 1 set error1=GOOD
+if errorlevel 1 set error1=FAILED
 
 ping -n 1 %POOL2% | find "TTL"
-if not errorlevel 1 set error2=colormsg 0c "GOOD"
-if errorlevel 1 set error2=colormsg 0A "FAILED"
+if not errorlevel 1 set error2=GOOD
+if errorlevel 1 set error2=FAILED
 
 ping -n 1 %POOL3% | find "TTL"
-if not errorlevel 1 set error3=colormsg 0c "GOOD"
-if errorlevel 1 set error3=colormsg 0A "FAILED"
+if not errorlevel 1 set error3=GOOD
+if errorlevel 1 set error3=FAILED
 
 ping -n 1 %POOL4% | find "TTL"
-if not errorlevel 1 set error4=colormsg 0c "GOOD"
-if errorlevel 1 set error4=colormsg 0A "FAILED"
-echo **************************************************
-echo * Below is a list of all the pools               *
-echo * along with your ability to connect to them     * 
-echo *                                                *
-echo * 1. nxscpupool.com %error1%                         *
-echo *                                                *
-echo * 2. nxsminingpool.com %error2%                      *
-echo *                                                *
-echo * 3. nxspool.com %error3%                            *
-echo *                                                *
-echo * 4. nexusminingpool.com %error4%                    *
-echo *                                                *
-echo *                                                *
-echo * *NOTE*  the faster your connection             *
-echo * the faster you can submit shares               *
+if not errorlevel 1 set error4=GOOD
+if errorlevel 1 set error4=FAILED
+echo.
+echo     Below is a list of all the pools
+echo     along with your ability to connect to them
+echo.
+echo          1. nxscpupool.com %error1%
+echo.
+echo          2. nxsminingpool.com %error2%
+echo.
+echo          3. nxspool.com %error3%
+echo.
+echo          4. nexusminingpool.com %error4%
+echo.
+echo.
+echo     *NOTE*  the faster your connection
+echo     the faster you can submit shares
 SET /P M=Type Your Choice then press ENTER
 IF %M%==1 GOTO POOLA 
 IF %M%==2 GOTO POOLB 
@@ -140,16 +139,16 @@ echo *             Nexus Configurator                 *
 echo **************************************************
 echo * Please Verify this information below           *
 echo **************************************************
-echo *
-echo * Pool = %MP%
-echo * NXS Address = %ADDR%
-echo * Threads = %threads%
-echo * Bit Array size = %arrays%
-echo * 
-echo ************************************************** 
-echo * Press 1 to write the .conf file                *
-echo * Press 2 to restart                             *
-echo **************************************************
+echo.
+echo     Pool = %MP%
+echo     NXS Address = %ADDR%
+echo     Threads = %threads%
+echo     Bit Array size = %arrays%
+echo.
+echo.
+echo     Press 1 to write the .conf file
+echo     Press 2 to restart the configurator
+echo.
 SET /P M=Type Your Choice then press ENTER
 IF %M%==1 GOTO WRITEOUT 
 IF %M%==2 GOTO START 
