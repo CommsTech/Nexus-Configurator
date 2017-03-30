@@ -40,12 +40,12 @@ ECHO %out%
 SET PREM=%out:L2CacheSize =%
 SET KB=%PREM: =%
 set /a KBCS=%KB%/1
-SET lf=
-FOR /F "delims=" %%i IN ('wmic cpu get L3CacheSize') DO if ("!out!"=="") (set out=%%i) else (set out=!out!%lf%%%i)
+SET oc=
+FOR /F "delims=" %%i IN ('wmic cpu get L3CacheSize') DO if ("!out!"=="") (set out=%%i) else (set out=!out!%oc%%%i)
 ECHO %out%
-SET PREM=%out:L3CacheSize =%
-SET OC=%PREM: =%
-set /a OCS=%OC%/1
+SET PRAM=%out:L3CacheSize =%
+SET LC=%PRAM: =%
+SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a TCS=%KBCS% + %OCS%
 SET /a arrays=%TCS% * 8000 / %NUMBER_OF_PROCESSORS% * %threads%
