@@ -55,12 +55,12 @@ SET LC=%PRAM: =%
 SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a TCS=%KBCS%
-SET /a arrays=%TCS% * 80 * %ARC% / %NUMBER_OF_PROCESSORS% * %threads%
+SET /a arrays=%TCS% * 80 * %ARC%
 set PRIME=12
 echo.
 echo     L3CacheSpeed too slow only using L2Cache
 echo     Making your Total Cache Size %TCS%
-echo     Using %TCS% x 80 x %ARC% /%NUMBER_OF_PROCESSORS% x %threads% 
+echo     Using %TCS% x 80 x %ARC%
 echo     to set your bit array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
 echo     so we will use %threads% total threads
