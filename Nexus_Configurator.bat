@@ -54,8 +54,8 @@ SET PRAM=%otr:L3CacheSize =%
 SET LC=%PRAM: =%
 SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
-SET /a OH=%LC% / 1024 / 2 / 2 * %threads% * 128
-SET /a TCS=%KBCS% + %OH%
+SET /a OH=%LC% / 1024 / 2 / 2 * %NUMBER_OF_PROCESSORS% * 128
+SET /a TCS=%KBCS%
 SET /a arrays=%TCS% * 80 * %ARC%
 set PRIME=12
 echo.
@@ -139,7 +139,7 @@ echo.
 echo.
 echo     *NOTE*  Please review the pools webpage before selecting
 echo.
-SET /P M=Type Your Choice then press ENTER
+SET /P M=Type Your Choice then press ENTER :
 IF %M%==1 GOTO POOLA 
 IF %M%==2 GOTO POOLB 
 IF %M%==3 GOTO POOLC 
@@ -178,7 +178,7 @@ echo.
 echo     Press 1 to write the .conf file
 echo     Press 2 to restart the configurator
 echo.
-SET /P M=Type Your Choice then press ENTER
+SET /P M=Type Your Choice then press ENTER :
 IF %M%==1 GOTO WRITEOUT 
 IF %M%==2 GOTO START 
 
@@ -213,7 +213,7 @@ echo *                                                     *
 echo * Press 1 to Start Mining                             *
 echo * Press 2 to Exit                                     *
 echo *******************************************************
-SET /P M=Type Your Choice then press ENTER
+SET /P M=Type Your Choice then press ENTER :
 IF %M%==1 GOTO MINE
 IF %M%==2 GOTO EXIT 
 
