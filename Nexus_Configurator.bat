@@ -4,7 +4,7 @@ Title Nexus CPU Miner Configurator
 echo ************************************************** 
 echo *            Nexus Configurator                  *
 echo **************************************************
-echo *  for Nexus Pool Miner v0.0.1 by Viz            *
+echo *  for Nexus Pool Miner v0.0.1 by Videlicet      *
 echo *  Configurator v0.0.1 by CommsTech              *
 echo *  http://CryptoSoldier.com                      *
 echo **************************************************
