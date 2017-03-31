@@ -62,16 +62,16 @@ IF /I "%KBCS%" EQU "3072" SET TCS=2432
 IF /I "%TCS%" GEQ "3072" SET TCS=1664
 IF /I "%threads%" EQU "%NUMBER_OF_PROCESSORS%" SET /a threads=%NUMBER_OF_PROCESSORS% - 1
 SET /a arrays=%TCS% * 80 * %ARC%
-set PRIME=12
+SET PRIME=12
+IF /I "arrays" LEQ "8388608" set PRIME=10
+IF /I "%arrays%" GEQ "12582912" set PRIME=14
 echo.
-echo     L3CacheSpeed slow only using alittle
-echo     Making your Total Cache Size %TCS%
-echo     Using %TCS% x 80 x %ARC%
+echo     Using %TCS% (Cache) x 80  x %ARC% (OS)
 echo     to set your bit array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
 echo     so we will use %threads% total threads
 echo     We will set your shieve to %PRIME%
-echo     current error level %errorlevel%
+echo     Your current error level is %errorlevel%
 echo.
 echo      press any key to continue
 pause
