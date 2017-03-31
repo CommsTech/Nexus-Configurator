@@ -1,7 +1,7 @@
 @echo off
-REM --------------------------------------------------
+REM -------------------------------------------------------------------------------------------------------------------------
 REM Setup Console view
-REM --------------------------------------------------
+REM -------------------------------------------------------------------------------------------------------------------------
 mode con: cols=80 lines=35
 CD %~dp0
 Title Nexus CPU Miner Configurator
@@ -76,7 +76,7 @@ IF /I "%TCS%" GEQ "3072" SET TCS=1664
 IF /I "%threads%" EQU "%NUMBER_OF_PROCESSORS%" SET /a threads=%NUMBER_OF_PROCESSORS% - 1
 SET /a arrays=%TCS% * 80 * %ARC%
 SET PRIME=12
-IF /I "arrays" LEQ "8388608" set PRIME=10
+IF /I "arrays" LEQ "8519680" set PRIME=10
 IF /I "%arrays%" GEQ "12582912" set PRIME=14
 echo.
 echo     Using %TCS% (Cache) x 80  x %ARC% (OS)
@@ -261,7 +261,7 @@ IF %M%==3 GOTO EXIT
 REM ------------------------------------------------------------------------------------------------------------------------
 REM Startup miner if in the current directory
 REM ------------------------------------------------------------------------------------------------------------------------
-start nexus_cpuminer.exe
+if exists nexus_cpuminer.exe start nexus_cpuminer.exe
 pause
 
 :WEB
