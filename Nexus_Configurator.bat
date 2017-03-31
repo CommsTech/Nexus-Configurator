@@ -223,16 +223,22 @@ echo *                                                     *
 echo *                                                     *
 echo *                                                     *
 echo * Press 1 to Start Mining                             *
-echo * Press 2 to Exit                                     *
+echo * Press 2 to view cryptosoldier.com
+echo * Press 3 to Exit                                     *
 echo *******************************************************
 SET /P M=Type Your Choice then press ENTER :
 IF %M%==1 GOTO MINE
-IF %M%==2 GOTO EXIT 
+IF %M%==2 GOTO WEB
+IF %M%==3 GOTO EXIT 
 
 :MINE
 REM Startup miner if in the current directory
 start nexus_cpuminer.exe
 pause
+
+:WEB
+REM Open website
+start http://cryptosoldier.com
 
 :EXIT
 REM Close window
