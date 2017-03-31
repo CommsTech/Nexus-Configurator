@@ -1,6 +1,7 @@
 @echo off
 CD %~dp0
 Title Nexus CPU Miner Configurator
+REM Disclosure Agreement
 echo ************************************************** 
 echo *            Nexus Configurator                  *
 echo **************************************************
@@ -24,6 +25,7 @@ echo **************************************************
 pause
 
 :START
+REM Gather information and set Variables
 CLS
 echo ************************************************** 
 echo *               Nexus Configurator               *
@@ -77,6 +79,7 @@ echo      press any key to continue
 pause
 
 :ADDRESS
+REM Setup wallet address info
 CLS
 echo ************************************************** 
 echo *              Nexus Configurator                *
@@ -91,6 +94,7 @@ SET /P ADDR=Enter Your Nexus (NXS) Address Here:
 If "%ADDR%"=="" SET ADDR=2RGMypvsvDxbYUXUDKJ9zc4Cd6ZuE6SVq6ggmLupLgoNU9xmCEn
 
 :POOL
+REM Gather pool status and select pool
 CLS
 SET POOL1=nxscpupool.com  
 SET POOL2=nxsminingpool.com
@@ -167,6 +171,7 @@ SET MP=nexusminingpool.com
 GOTO VERIFY
 
 :VERIFY
+REM Allow user to verify information for correctness
 CLS
 echo **************************************************
 echo *             Nexus Configurator                 *
@@ -188,6 +193,7 @@ IF %M%==1 GOTO WRITEOUT
 IF %M%==2 GOTO START 
 
 :WRITEOUT
+REM Write the .conf file to current directory
 (
 echo ^{
 echo "host": "%MP%",
@@ -202,6 +208,7 @@ echo "primorial_end_prime": %PRIME% ^}
 ) > miner.conf
 
 :END
+REM Setup complete notification
 CLS
 echo *******************************************************
 echo *               Nexus Configurator                    *
@@ -223,8 +230,10 @@ IF %M%==1 GOTO MINE
 IF %M%==2 GOTO EXIT 
 
 :MINE
+REM Startup miner if in the current directory
 start nexus_cpuminer.exe
 pause
 
 :EXIT
+REM Close window
 exit
