@@ -1,4 +1,5 @@
 @echo off
+mode con: cols=80 lines=35
 CD %~dp0
 Title Nexus CPU Miner Configurator
 REM Disclosure Agreement
