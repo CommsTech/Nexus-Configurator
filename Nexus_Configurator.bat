@@ -69,14 +69,14 @@ SET /a OCS=%LC%/1
 SET /a threads=%NUMBER_OF_PROCESSORS% / 2 + 1
 SET /a OH=%LC% / 1024 / 2 / 2 * %NUMBER_OF_PROCESSORS% * 128
 SET /a TCS=%KBCS%
-IF /I "%KBCS%" GEQ "4096" SET /a TCS=%KBCS%/%threads%
+IF /I "%KBCS%" GEQ "4096" SET /a TCS=%KBCS%/%NUMBER_OF_PROCESSORS% * %threads%
 IF /I "%KBCS%" LEQ "1024" SET TCS=2048
 IF /I "%KBCS%" EQU "3072" SET TCS=2432
 IF /I "%TCS%" GEQ "4096" SET TCS=1664
 IF /I "%threads%" EQU "%NUMBER_OF_PROCESSORS%" SET /a threads=%NUMBER_OF_PROCESSORS% - 1
 SET /a arrays=%TCS% * 80 * %ARC%
 SET PRIME=12
-IF /I "arrays" LEQ "8519680" set PRIME=10
+IF /I "%arrays%" LEQ "8519680" set PRIME=10
 IF /I "%arrays%" GEQ "12582912" set PRIME=14
 echo.
 echo     Using %TCS% (Cache) x 80  x %ARC% (OS)
