@@ -80,9 +80,7 @@ IF /I "%arrays%" LEQ "8519680" set PRIME=10
 IF /I "%arrays%" GEQ "12582912" set PRIME=14
 IF /I "%TCS%" EQU "2048" SET /a arrays=%TCS% / %NUMBER_OF_PROCESSORS% * %threads% * 8 * 1024
 echo.
-IF /I "%TCS%" EQU "2048" (ECHO     Using %TCS% / %NUMBER_OF_PROCESSORS% * %threads% * 8 * 1024"
-) else ( echo     Using %TCS% (Cache) x 80  x %ARC% (OS) )
-echo     to set your bit array size to %arrays%
+echo     setting your bit array size to %arrays%
 echo     and you have %NUMBER_OF_PROCESSORS% cores
 echo     so we will use %threads% total threads
 echo     We will set your shieve to %PRIME%
